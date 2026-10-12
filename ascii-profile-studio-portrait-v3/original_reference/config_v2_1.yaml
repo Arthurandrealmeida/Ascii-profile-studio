@@ -1,0 +1,88 @@
+profile:
+  username: demo-developer
+  photo: assets/retrato.png
+  title: github
+portrait:
+  columns: 36
+  rows: 24
+  contrast: 1.8
+  brightness: 1.0
+  invert: false
+  charset: '@%#*+=-:,. '
+  zoom: 3.0
+  center_x: 0.5
+  center_y: 0.23
+  edge_strength: 0.85
+  sharpness: 1.8
+  local_contrast: 0.3
+  mode: edges
+  font_scale: 1.0
+  auto_focus: 0.35
+theme:
+  background: '#161b22'
+  text: '#c9d1d9'
+  key: '#ffa657'
+  value: '#a5d6ff'
+  muted: '#616e7f'
+  addition: '#3fb950'
+  deletion: '#f85149'
+  font_size: 15
+  light:
+    background: '#f6f8fa'
+    text: '#24292f'
+    key: '#953800'
+    value: '#0969da'
+    muted: '#6e7781'
+    addition: '#1a7f37'
+    deletion: '#cf222e'
+sections:
+- title: ''
+  rows:
+  - label: OS
+    value: Fedora Linux, Windows 11
+  - label: Editor
+    value: VS Code, Neovim
+  - label: Foco
+    value: Web Development, Open Source
+  - label: Projetos
+    value: Portfolio, CLI tools
+- title: Linguagens
+  rows:
+  - label: Programação
+    value: Python, TypeScript, Go
+  - label: Aprendendo
+    value: Rust
+- title: Interesses
+  rows:
+  - label: Hobbies
+    value: Games, pixel art, reading
+  - label: Hardware
+    value: Mechanical keyboards
+- title: Contato
+  rows:
+  - label: Email
+    value: demo@example.com
+  - label: GitHub
+    value: github.com/example
+- title: GitHub Stats
+  rows:
+  - label: Repositórios
+    value: '12'
+  - label: Seguidores
+    value: '42'
+  - label: Estrelas recebidas
+    value: '87'
+layout:
+  padding: 16
+  portrait_x: 15
+  top: 30
+  column_gap: 18
+  left_min_width: 332
+  right_width: 640
+  label_width: 292
+  line_height: 1.33
+  section_gap: 13
+  min_height: 530
+github:
+  auto_update: false
+  cached: {}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ASCII Profile Studio — Editor</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script defer src="/static/app.js"></script>
+</head>
+<body>
+<header class="bar"><div class="brand"><div class="mark">&gt;_</div><div>ASCII Profile Studio <small>Seu perfil, totalmente editável.</small></div></div><div class="topactions"><span class="privacy">● 100% local</span><button type="button" id="undo" title="Desfazer (Ctrl+Z)">↶ Desfazer</button><button type="button" id="redo" title="Refazer (Ctrl+Shift+Z)">↷ Refazer</button></div></header>
+<main>
+  <div class="intro"><h1>Crie seu README em estilo terminal.</h1><p>Use a sua foto, controle o ASCII, personalize qualquer campo e exporte SVG nítido. Prévia em tempo real.</p></div>
+  <div class="workspace">
+    <div class="editor">
+      <section class="panel"><div class="sectiontitle"><span>01</span><h2>Identidade e fotografia</h2></div>
+        <div class="two"><label>Usuário do GitHub<input id="username" type="text" placeholder="seu-usuario"></label><label>Texto depois do @<input id="hostname" type="text" placeholder="github"></label></div>
+        <label class="photo-upload">↑ Escolher foto PNG / JPEG / WebP<input type="file" id="file" accept="image/png,image/jpeg,image/webp"></label>
+        <p class="hint">A foto original e uma versão sem fundo estão incluídas em <code>assets/</code>. Uploads ficam somente no computador.</p>
+        <h3>Enquadramento</h3><p class="hint">Arraste sua foto para mover o recorte. Ajuste o zoom e a posição manualmente se preferir.</p>
+        <div class="croparea"><canvas id="crop" width="400" height="288" aria-label="Imagem com área de recorte. Arraste para posicionar."></canvas></div>
+        <div class="cols3"><label>Zoom <output id="zoom-display"></output><input id="zoom" type="range" min="1" max="5" step="0.05"></label><label>Horizontal <output id="center_x-display"></output><input id="center_x" type="range" min="0" max="1" step="0.01"></label><label>Vertical <output id="center_y-display"></output><input id="center_y" type="range" min="0" max="1" step="0.01"></label></div>
+      </section>
+      <section class="panel"><div class="sectiontitle"><span>02</span><h2>Campos e seções</h2><button id="add-section" class="small">+ Seção</button></div><p class="hint">Troque "Uptime" por qualquer informação. Arraste as alças <b>⠿</b> para reorganizar campos e seções; os botões ↑ ↓ também funcionam.</p><div id="sections"></div></section>
+      <section class="panel"><div class="sectiontitle"><span>03</span><h2>Arte ASCII</h2></div>
+        <div class="two"><label>Largura <output id="columns-display"></output><input type="range" id="columns" min="22" max="120" step="1"></label><label>Altura <output id="rows-display"></output><input type="range" id="rows" min="15" max="90" step="1"></label><label>Contraste <output id="contrast-display"></output><input type="range" id="contrast" min="0.5" max="3" step=".05"></label><label>Brilho <output id="brightness-display"></output><input type="range" id="brightness" min=".5" max="2" step=".05"></label><label>Bordas <output id="edge_strength-display"></output><input type="range" id="edge_strength" min="0" max="1.5" step=".05"></label><label>Nitidez <output id="sharpness-display"></output><input type="range" id="sharpness" min="0" max="3" step=".1"></label><label>Contraste local <output id="local_contrast-display"></output><input type="range" id="local_contrast" min="0" max="1" step=".05"></label><label>Algoritmo<select id="mode"><option value="portrait">Retrato realista em ASCII (recomendado)</option><option value="edges">Contornos (antigo)</option><option value="classic">Clássico</option><option value="dither">Dithering</option></select></label></div>
+        <label>Caracteres do retrato<input type="text" id="charset"></label><p class="hint">No modo de retrato detalhado, os caracteres recebem tons individuais e continuam 100% editáveis como texto no SVG. Use PNG transparente e uma foto de rosto visível para melhorar a semelhança.</p><label>Tamanho dos caracteres do retrato <output id="font_scale-display"></output><input id="font_scale" type="range" min="0.35" max="1.2" step=".01"></label><label class="check"><input type="checkbox" id="invert"> Inverter tons</label>
+      </section>
+      <section class="panel"><div class="sectiontitle"><span>04</span><h2>Layout e aparência</h2></div>
+        <label>Preset visual<select id="preset"><option value="">Escolha um estilo sem alterar seus textos...</option><option value="andrew">Terminal clássico (Andrew)</option><option value="compact">Compacto</option><option value="neon">Neon</option><option value="minimal">Minimalista</option></select></label>
+        <div class="cols3" id="layout-controls"></div>
+        <label>Tamanho da fonte <output id="font_size-display"></output><input id="font_size" type="range" min="10" max="23" step="1"></label>
+        <h3>Cores — modo escuro</h3><div class="colors" id="dark-colors"></div>
+        <h3>Cores — modo claro</h3><div class="colors" id="light-colors"></div>
+        <p class="hint">Para destacar parte de um valor, escreva <code>[[+123++]]</code> (verde) ou <code>[[-34--]]</code> (vermelho). As cores acima serão usadas de verdade no SVG.</p>
+      </section>
+      <section class="panel"><div class="sectiontitle"><span>05</span><h2>GitHub e publicação</h2></div>
+        <label class="check"><input type="checkbox" id="auto_update"> Atualizar estatísticas automaticamente nas GitHub Actions</label>
+        <div class="actions"><button id="stats">↻ Buscar estatísticas agora</button><span class="hint">Atualiza dados públicos do seu usuário.</span></div>
+        <p class="hint">Campos automáticos usam <code>{{github.public_repos}}</code>, <code>{{github.followers}}</code>, <code>{{github.stars_received}}</code> e <code>{{github.forks_received}}</code>. Totais que a API não oferece ficam indisponíveis — não inventamos commits ou linhas de código.</p>
+        <p class="hint" id="last-stats"></p>
+      </section>
+      <div class="foot-actions"><button id="save" class="primary">Salvar e gerar SVGs</button><p class="hint">O projeto também funciona pelo terminal com <code>python generator.py</code>.</p></div>
+    </div>
+    <aside class="preview panel"><div class="previewtop"><div><h2>Prévia do seu perfil</h2><p>A imagem exibida pode ser exportada agora.</p></div><div class="previewoptions"><label class="check"><input type="checkbox" id="light"> Tema claro</label><button id="refresh" class="small">↻</button></div></div>
+      <div class="previewimage"><img id="preview-img" alt="Prévia SVG do cartão GitHub"></div>
+      <div class="statusline"><span id="status" role="status" aria-live="polite">Carregando...</span><span id="dirty-indicator"></span></div>
+      <div class="download"><button id="download-dark">↓ SVG escuro</button><button id="download-light">↓ SVG claro</button><button id="download-portrait">↓ Retrato ASCII isolado</button></div>
+      <div class="note"><strong>Para mostrar no perfil:</strong><p>Salve os arquivos <code>output/dark_mode.svg</code> e <code>output/light_mode.svg</code> no repositório com o mesmo nome do seu usuário. O arquivo <code>README_PROFILE_TEMPLATE.md</code> já contém o código para alternar entre temas.</p></div>
+    </aside>
+  </div>
+</main>
+</body></html>

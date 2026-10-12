@@ -1,0 +1,57 @@
+profile:
+  username: demo-developer
+  photo: assets/retrato.png
+  title: github
+portrait:
+  columns: 34
+  rows: 25
+  contrast: 1.25
+  brightness: 1.0
+  invert: false
+  charset: '@%#*+=-:,. '
+theme:
+  background: '#161b22'
+  text: '#c9d1d9'
+  key: '#ffa657'
+  value: '#a5d6ff'
+  muted: '#616e7f'
+  addition: '#3fb950'
+  deletion: '#f85149'
+  font_size: 15
+sections:
+- title: ''
+  rows:
+  - label: OS
+    value: Fedora Linux, Windows 11
+  - label: Editor
+    value: VS Code, Neovim
+  - label: Foco
+    value: Web Development, Open Source
+  - label: Projetos
+    value: Portfolio, CLI tools
+- title: Linguagens
+  rows:
+  - label: Programação
+    value: Python, TypeScript, Go
+  - label: Aprendendo
+    value: Rust
+- title: Interesses
+  rows:
+  - label: Hobbies
+    value: Games, pixel art, reading
+  - label: Hardware
+    value: Mechanical keyboards
+- title: Contato
+  rows:
+  - label: Email
+    value: demo@example.com
+  - label: GitHub
+    value: github.com/example
+- title: GitHub Stats
+  rows:
+  - label: Repositórios
+    value: '12'
+  - label: Seguidores
+    value: '42'
+  - label: Estrelas recebidas
+    value: '87'
