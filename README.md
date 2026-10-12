@@ -1,9 +1,6 @@
 # Ascii-profile-studio
 A customizable GitHub Profile README generator that turns your photos into detailed ASCII art portraits. Create terminal-style SVG profiles with editable layouts, themes, custom fields, and GitHub stats.
 
-
-# ASCII Profile Studio
-
 **Turn your photos into ASCII art and build a fully customizable GitHub Profile README.**
 
 ASCII Profile Studio is a free, open-source **GitHub Profile README generator** and **photo-to-ASCII art converter** that lets you create personalized, terminal-style GitHub profiles.
