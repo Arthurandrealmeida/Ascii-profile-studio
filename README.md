@@ -14,7 +14,7 @@ Everything runs locally on your computer. No account, cloud processing, or gener
 
 ## Preview
 
-![ASCII Profile Studio Preview](output/preview.png)
+<img width="1909" height="929" alt="image" src="https://github.com/user-attachments/assets/cb049474-d8f0-4e43-8f68-1f7ba2b40f1b" />
 
 *Example of a GitHub README profile generated with ASCII Profile Studio.*
 
