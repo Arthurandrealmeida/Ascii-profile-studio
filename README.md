@@ -92,7 +92,7 @@ Statistics that cannot be retrieved reliably are displayed as unavailable rather
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ascii-profile-studio.git
+git clone https://github.com/Arthurandrealmeida/ascii-profile-studio.git
 cd ascii-profile-studio
 ```
 
